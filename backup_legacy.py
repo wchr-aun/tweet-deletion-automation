@@ -10,6 +10,7 @@ from typing import List
 import pandas as pd
 
 STORE_MEDIA = True
+LIMIT = 20000
 twit = TwitterAPI()
 BASE_DATA_PATH = './data'
 
@@ -37,7 +38,6 @@ def backup_legacy():
     client = Firebase()
     mediaList = listdir(f'{BASE_DATA_PATH}/tweet_media')
     tweets = pd.read_json(f'{BASE_DATA_PATH}/tweet.json')
-    LIMIT = int(config('LIMIT'))
     count = 0
 
     f = open('backup.txt', 'r')
