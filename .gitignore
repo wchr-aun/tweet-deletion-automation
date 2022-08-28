@@ -1,0 +1,10 @@
+bin
+__pycache__
+include
+lib
+.env
+pyvenv.cfg
+media/*
+!media/.gitkeep
+data
+backup.txt
