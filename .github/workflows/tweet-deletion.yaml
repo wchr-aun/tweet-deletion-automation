@@ -31,4 +31,3 @@ jobs:
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
           ACCESS_SECRET_TOKEN: ${{ secrets.ACCESS_SECRET_TOKEN }}
           SCREEN_NAME: ${{ secrets.SCREEN_NAME }}
-      - name: export index
