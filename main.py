@@ -53,8 +53,6 @@ def main():
     for tweet in tqdm(tweets):
         if tweet.created_at.replace(tzinfo=timezone.utc) > cutoff_date:
             continue
-        if tweet.full_text.startswith(IMPORTANT_FLAG):
-            continue
         try:
             client.add_tweet(str(tweet.id), Tweet(
                 created_at=tweet.created_at,
@@ -65,11 +63,15 @@ def main():
                 retweet_count=tweet.retweet_count,
                 retweet_source=tweet.retweeted_status.id if tweet.retweeted else None
             ))
+            if tweet.full_text.startswith(IMPORTANT_FLAG):
+                print(f"Ignoring important tweet: {tweet.full_text}")
+                continue
+
             deleted = twit.del_tweet(tweet.id)
             if not deleted:
                 raise Exception(f"Failed to delete tweet: {tweet.id}")
         except Exception as e:
-            print(f'Failed to add tweet {tweet.id}')
+            print(f"Failed to add tweet {tweet.id}")
             print(e)
             continue
 

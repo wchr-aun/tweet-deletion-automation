@@ -8,3 +8,4 @@ media/*
 !media/.gitkeep
 data
 backup.txt
+data_

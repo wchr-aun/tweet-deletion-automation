@@ -1,3 +1,4 @@
+import datetime
 from firebase_admin import credentials, firestore, storage, initialize_app
 from decouple import config
 import json
@@ -30,3 +31,7 @@ class Firebase:
         except Exception as e:
             print("Error uploading media:", e)
             return False
+
+    def get_media_url(self, filename) -> str:
+        blob = self.storage.get_blob(filename)
+        return blob.generate_signed_url(datetime.timedelta(seconds=300), method='GET')
