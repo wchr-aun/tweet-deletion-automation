@@ -29,3 +29,5 @@ jobs:
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
           ACCESS_SECRET_TOKEN: ${{ secrets.ACCESS_SECRET_TOKEN }}
           SCREEN_NAME: ${{ secrets.SCREEN_NAME }}
+      - uses: actions/checkout@v2
+      - uses: gautamkrishnar/keepalive-workflow@v1
